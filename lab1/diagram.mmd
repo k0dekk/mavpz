@@ -1,0 +1,57 @@
+erDiagram
+    User {
+        uuid user_id PK
+        string email UK
+        string name
+        datetime registred_at
+    }
+
+    Subject {
+        uuid subject_id PK
+        string title
+        string kind "mandatory або elective"
+    }
+
+    Topic {
+        uuid topic_id PK
+        uuid subject_id FK
+        string title
+    }
+
+    Question {
+        uuid question_id PK
+        uuid topic_id FK
+        string question_type "single або multiple"
+        string body
+        string image_url "необов'язковий"
+        string explanation
+    }
+
+    Answer_option {
+        uuid answer_option_id PK
+        uuid question_id FK
+        string body
+        boolean isCorrect
+    }
+
+    Attempt {
+        uuid attempt_id PK
+        uuid user_id FK
+        uuid question_id FK
+        datetime answered_at
+    }
+
+    Mistake_review {
+        uuid mistake_id PK
+        uuid attempt_id FK
+        string note
+        string status "unreviewed або reviewed"
+    }
+
+    Subject ||--o{ Topic : "contains"
+    Topic ||--o{ Question : "groups"
+    Question ||--|{ Answer_option : "offers"
+    User ||--o{ Attempt : "makes"
+    Question ||--o{ Attempt : "has"
+    Attempt }o--|{ Answer_option : "selects"
+    Attempt ||--o| Mistake_review : "has"
