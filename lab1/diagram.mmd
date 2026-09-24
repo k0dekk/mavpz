@@ -3,7 +3,7 @@ erDiagram
         uuid user_id PK
         string email UK
         string name
-        datetime registred_at
+        datetime registered_at
     }
 
     Subject {
@@ -31,7 +31,7 @@ erDiagram
         uuid answer_option_id PK
         uuid question_id FK
         string body
-        boolean isCorrect
+        boolean is_correct
     }
 
     Attempt {
@@ -42,7 +42,7 @@ erDiagram
     }
 
     Mistake_review {
-        uuid mistake_id PK
+        uuid mistake_review_id PK
         uuid attempt_id FK
         string note
         string status "unreviewed або reviewed"

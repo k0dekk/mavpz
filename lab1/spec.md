@@ -6,7 +6,7 @@
   - `user_id` (`uuid`, PK) — ідентифікатор користувача
   - `email` (`string`) — адреса пошти
   - `name` (`string`) — ім'я
-  - `registred_at` (`datetime`) — дата реєстрації
+  - `registered_at` (`datetime`) — дата реєстрації
 
 - **Subject**
   - `subject_id` (`uuid`, PK) — ідентифікатор предмета
@@ -30,7 +30,7 @@
   - `answer_option_id` (`uuid`, PK) — ідентифікатор варіанта
   - `question_id` (`uuid`, FK) — питання, якому належить варіант
   - `body` (`string`) — текст варіанта
-  - `isCorrect` (`boolean`) — чи є варіант правильним
+  - `is_correct` (`boolean`) — чи є варіант правильним
 
 - **Attempt**
   - `attempt_id` (`uuid`, PK) — ідентифікатор спроби
@@ -39,7 +39,7 @@
   - `answered_at` (`datetime`) — час відповіді
 
 - **Mistake_review**
-  - `mistake_id` (`uuid`, PK) — ідентифікатор розбору
+  - `mistake_review_id` (`uuid`, PK) — ідентифікатор розбору
   - `attempt_id` (`uuid`, FK) — неправильна спроба, яку розбирають
   - `note` (`string`) — нотатка користувача
   - `status` (`string`) — `unreviewed` або `reviewed`
