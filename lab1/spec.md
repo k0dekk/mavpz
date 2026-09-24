@@ -14,8 +14,8 @@
   - `kind` (`string`) — `mandatory` або `elective`
 
 - **Topic**
-  - `subject_id` (`uuid`, PK) — ідентифікатор предмета
-  - `topic_id` (`uuid`, FK) — ідентифікатор теми
+  - `topic_id` (`uuid`, PK) — ідентифікатор теми
+  - `subject_id` (`uuid`, FK) — предмет, до якого належить тема
   - `title` (`string`) — назва теми
 
 - **Question**
@@ -28,12 +28,14 @@
 
 - **Answer_option**
   - `answer_option_id` (`uuid`, PK) — ідентифікатор варіанта
+  - `question_id` (`uuid`, FK) — питання, якому належить варіант
   - `body` (`string`) — текст варіанта
   - `isCorrect` (`boolean`) — чи є варіант правильним
 
 - **Attempt**
   - `attempt_id` (`uuid`, PK) — ідентифікатор спроби
   - `question_id` (`uuid`, FK) — на яке питання
+  - `user_id` (`uuid`, FK) — хто відповідав
   - `answered_at` (`datetime`) — час відповіді
 
 - **Mistake_review**
