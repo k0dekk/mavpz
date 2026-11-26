@@ -1,0 +1,28 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Відвідувач" as Visitor
+actor "Користувач" as User
+User --|> Visitor
+
+rectangle "Платформа підготовки до НМТ" {
+  usecase "UC-01 Зареєструватися" as UC01
+  usecase "UC-02 Увійти в обліковий запис" as UC02
+  usecase "UC-03 Обрати предмети" as UC03
+  usecase "UC-04 Переглянути каталог питань предмета" as UC04
+  usecase "UC-05 Розв'язати питання\n--\nТочка розширення\nПісля показу результату й пояснення" as UC05
+  usecase "UC-06 Ознайомитися з поясненням" as UC06
+  usecase "UC-07 Опрацювати помилку" as UC07
+}
+
+Visitor --> UC01
+Visitor --> UC02
+User --> UC03
+User --> UC04
+User --> UC05
+User --> UC07
+
+UC05 ..> UC06 : <<include>>
+UC07 ..> UC05 : <<extend>>\n[відповідь неправильна і користувач\nобрав перехід до розбору]
+@enduml
